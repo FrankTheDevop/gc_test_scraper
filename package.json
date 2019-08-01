@@ -1,0 +1,68 @@
+{
+  "name": "scrapertest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "NODE_ENV=develop nyc mocha --timeout=70000 --recursive test/modules/* ",
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "string-saw": "0.0.42"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-json": "^1.0.0",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^3.17.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-mocha": "^4.12.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "sinon": "^1.13.0",
+    "sinon-chai": "^3.3.0"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "reporter": [
+      "text-lcov",
+      "text",
+      "html"
+    ],
+    "temp-directory": "./alternative-tmp",
+    "report-dir": "./coverage",
+    "watermarks": {
+      "lines": [
+        80,
+        95
+      ],
+      "functions": [
+        80,
+        95
+      ],
+      "branches": [
+        80,
+        95
+      ],
+      "statements": [
+        80,
+        95
+      ]
+    }
+  }
+}
