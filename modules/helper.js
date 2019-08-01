@@ -5,7 +5,7 @@ const cheerio = require('cheerio')
 const rp = require('request-promise')
 
 const isDefined = (variable) => {
-    return !(variable === null || variable === undefined)
+  return !(variable === null || variable === undefined)
 }
 
 /**
@@ -14,40 +14,40 @@ const isDefined = (variable) => {
  * @returns {Promise<string>}
  */
 async function getNextProxyUrl () {
-    //const proxyUrl = 'http://username:password@ip:port'
-    const proxyUrl = ''
+  // const proxyUrl = 'http://username:password@ip:port'
+  const proxyUrl = ''
 
-    return Promise.resolve(proxyUrl)
+  return Promise.resolve(proxyUrl)
 }
 
-async function delay(min = 10, max = 60) {
-    return Promise
-      .delay(Math.random() * ((max - min) + min) * 1000)
+async function delay (min = 10, max = 60) {
+  return Promise
+    .delay(Math.random() * ((max - min) + min) * 1000)
 }
 
 async function requestData (address) {
-    const proxyUrl = await getNextProxyUrl()
-    const options = {
-        uri: address,
-        transform: (body) => {
-            return cheerio.load(body)
-        }
-    }
+  const proxyUrl = await getNextProxyUrl()
+  const options = {
+    uri: address,
+    transform: (body) => {
+      return cheerio.load(body)
+    },
+  }
 
-    if (isDefined(proxyUrl) && proxyUrl !== '') {
-        options.proxy = proxyUrl
-    }
+  if (isDefined(proxyUrl) && proxyUrl !== '') {
+    options.proxy = proxyUrl
+  }
 
-    await delay()
+  await delay()
 
-    const $ = await rp(options)
+  const $ = await rp(options)
 
-    return Promise.resolve($)
+  return Promise.resolve($)
 }
 
 module.exports = {
-    delay,
-    isDefined,
-    getNextProxyUrl,
-    requestData
+  delay,
+  isDefined,
+  getNextProxyUrl,
+  requestData,
 }

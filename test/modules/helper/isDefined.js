@@ -11,7 +11,7 @@ let expect = require('../../helpers/expect')
 
 const helper = require('../../../modules/helper.js')
 
-describe('helper.isDefined', function() {
+describe('helper.isDefined', function () {
   it('returns false for null', () => {
     const entry = null
 

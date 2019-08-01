@@ -14,7 +14,7 @@ const fs = require('fs')
 
 const hackerNews = require('../../../modules/hackerNews')
 
-describe('hackerNews.extract', function() {
+describe('hackerNews.extract', function () {
   it('rejects unknown variant', () => {
     const variant = 'dude'
     const block = {}

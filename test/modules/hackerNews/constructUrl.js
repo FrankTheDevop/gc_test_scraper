@@ -14,7 +14,7 @@ const fs = require('fs')
 
 const hackerNews = require('../../../modules/hackerNews')
 
-describe('hackerNews.constructUrl', function() {
+describe('hackerNews.constructUrl', function () {
   it('rejects null baseUrl', () => {
     const baseUrl = null
     const pageNumber = 0

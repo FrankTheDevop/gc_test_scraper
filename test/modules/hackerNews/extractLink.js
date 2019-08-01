@@ -14,7 +14,7 @@ const fs = require('fs')
 
 const hackerNews = require('../../../modules/hackerNews')
 
-describe('hackerNews.extractLink', function() {
+describe('hackerNews.extractLink', function () {
   it('rejects null block', () => {
     const block = null
     const $ = {}

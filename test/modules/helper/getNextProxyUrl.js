@@ -11,7 +11,7 @@ let expect = require('../../helpers/expect')
 
 const helper = require('../../../modules/helper.js')
 
-describe('helper.getNextProxyUrl', function() {
+describe('helper.getNextProxyUrl', function () {
   it('returns empty', async () => {
     const expected = ''
 

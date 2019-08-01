@@ -15,7 +15,7 @@ const sinon = require('sinon')
 
 const hackerNews = require('../../../modules/hackerNews')
 
-describe('hackerNews.extractData', function() {
+describe('hackerNews.extractData', function () {
   it('rejects null block1', () => {
     const block1 = null
     const block2 = null
@@ -107,34 +107,33 @@ describe('hackerNews.extractData', function() {
       points: '1',
       comments: '2',
       title: 'title',
-      link: 'link'
+      link: 'link',
     }
-    //const extractTitleSpy = sinon.spy(hackerNews, 'extractTitle')
+    // const extractTitleSpy = sinon.spy(hackerNews, 'extractTitle')
 
     let extractTitleStubCalls = 0
     let extractPointsStubCalls = 0
     let extractCommentsStubCalls = 0
     let extractLinkStubCalls = 0
 
-
-    const extractTitleStub = sinon.stub(hackerNews, 'extractTitle', function($, block) {
+    const extractTitleStub = sinon.stub(hackerNews, 'extractTitle', function ($, block) {
       extractTitleStubCalls++
-      return {title: 'title'}
+      return { title: 'title' }
     })
 
-    const extractPointsStub = sinon.stub(hackerNews, 'extractPoints', function($, block) {
+    const extractPointsStub = sinon.stub(hackerNews, 'extractPoints', function ($, block) {
       extractPointsStubCalls++
-      return {points: '1'}
+      return { points: '1' }
     })
 
-    const extractCommentsStub = sinon.stub(hackerNews, 'extractComments', function($, block) {
+    const extractCommentsStub = sinon.stub(hackerNews, 'extractComments', function ($, block) {
       extractCommentsStubCalls++
-      return {comments: '2'}
+      return { comments: '2' }
     })
 
-    const extractLinkStub = sinon.stub(hackerNews, 'extractLink', function($, block) {
+    const extractLinkStub = sinon.stub(hackerNews, 'extractLink', function ($, block) {
       extractLinkStubCalls++
-      return {link: 'link'}
+      return { link: 'link' }
     })
 
     const text = fs.readFileSync(__dirname + '/../../fixtures/hackernewsPage1.html')
@@ -172,13 +171,12 @@ describe('hackerNews.extractData', function() {
       points: '494',
       comments: '128',
       title: 'LightSail 2 Spacecraft Successfully Demonstrates Flight by Light',
-      link: 'http://www.planetary.org/blogs/jason-davis/lightsail-2-successful-flight-by-light.html'
+      link: 'http://www.planetary.org/blogs/jason-davis/lightsail-2-successful-flight-by-light.html',
     }
     const extractTitleSpy = sinon.spy(hackerNews, 'extractTitle')
     const extractLinkSpy = sinon.spy(hackerNews, 'extractLink')
     const extractPointsSpy = sinon.spy(hackerNews, 'extractPoints')
     const extractCommentsSpy = sinon.spy(hackerNews, 'extractComments')
-
 
     const text = fs.readFileSync(__dirname + '/../../fixtures/hackernewsPage1.html')
     const $ = cheerio.load(text)

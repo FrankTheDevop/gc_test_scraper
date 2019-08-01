@@ -7,10 +7,10 @@
 
 const Promise = require('bluebird')
 
-const assert = require('assert')
 const cheerio = require('cheerio')
 const fs = require('fs')
 const rp = require('request-promise')
+const path = require('path')
 const sinon = require('sinon')
 
 const expect = require('../../helpers/expect')
@@ -28,9 +28,9 @@ after(function (done) {
   done()
 })
 
-describe('helper.requestData', function() {
+describe('helper.requestData', function () {
   it('retrievs (mocked) data successfully', async () => {
-    const rpGetStub = sinon.stub(rp, 'Request').returns(Promise.resolve(cheerio.load(fs.readFileSync(__dirname + '/../../fixtures/hackernewsPage1.html'))))
+    const rpGetStub = sinon.stub(rp, 'Request').returns(Promise.resolve(cheerio.load(fs.readFileSync(path.join(__dirname, '/../../fixtures/hackernewsPage1.html')))))
 
     const result = await helper.requestData('http://www.google.de')
 
@@ -41,7 +41,6 @@ describe('helper.requestData', function() {
 
   it('retrievs data successfully', async () => {
     const result = await helper.requestData('http://www.google.de')
-
 
     expect(result.html().length).not.to.equal(0)
   })
